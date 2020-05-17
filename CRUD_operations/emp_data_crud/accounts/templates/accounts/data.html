@@ -1,0 +1,54 @@
+{% load static from staticfiles %}
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Employee Information</title>
+
+   <link rel="stylesheet" type="text/css" href="{%static 'css/stud_data_style.css' %} " >
+</head>
+
+  <body>
+    <div class="topnav">
+        <a  name="user"> Log In : {{request.user.username }} </a>
+        <a  name="user"> Type : {{request.user.first_name}} </a>
+        <a href="{%url 'logout' %}"><font color="red">Log out</font></a>
+    </div>
+
+    <br>
+    <table align="center" bgcolor="grey"><font color="black"><center> <h1>Goal  Details</h1></center></font><br>
+    <tr>
+       <th>Sr. No. </th>
+        <th>username</th>
+        <th>email ID</th>
+      <th>password_first</th>
+      <th>EDIT</th>
+        <th>Delete</th>
+        <th><bold>
+                <a href="{% url 'employee_insert' %}" class="btn btn-outline-success">
+                    <i class="fas fa-plus"></i>  Add New
+                </a>
+            </bold>
+            </th>
+
+
+    </tr>
+    {% for stored_empData in empdata %}
+    <tr>
+      <td>{{ forloop.counter }}</td>
+        <td>{{ stored_empData.username}}</td>
+        <td>{{ stored_empData.email}}</td>
+         <td>{{ stored_empData.password_first}}</td>
+         <td><a class="btn btn-secondary" href="{% url 'update_order' stored_empData.id %}">Update</a></td>
+         <td><a class="btn btn-danger" href="{% url 'delete_order' stored_empData.id  %}">Delete</a></td>
+    </tr>
+    {% endfor %}
+
+    </table>
+
+  </body>
+</html>
+
+
+

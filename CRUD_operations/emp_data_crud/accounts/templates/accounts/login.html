@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <title>login page</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'accounts/main.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'accounts/util.css' %}">
+    <style>
+body {
+  width: 400px;
+  height: 400px;
+  background-repeat: no-repeat, repeat;
+  background-image: url('paper.jpg');
+}
+
+    body{background:url(paper.jpg);}
+    form{background:url(accounts/image.jpg);}
+</style>
+</head>
+<body>
+<form action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">login</button>
+
+</form>
+</body>
+</html>
